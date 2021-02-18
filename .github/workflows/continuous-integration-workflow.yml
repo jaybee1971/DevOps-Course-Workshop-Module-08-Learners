@@ -43,10 +43,15 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: push to Heroku
-      uses: akhileshns/heroku-deploy@v3.11.10 # This is the action
-      with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "axpexercise8" #Must be unique in Heroku
-        heroku_email: "jay.bee71@outlook.com"
-        usedocker: true
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: push to Heroku
+        uses: akhileshns/heroku-deploy@v3.11.10 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "axpexercise8" #Must be unique in Heroku
+          heroku_email: "jay.bee71@outlook.com"
+          usedocker: true
